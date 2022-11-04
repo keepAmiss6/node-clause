@@ -5,14 +5,16 @@ const static = require('koa-static')
 
 const app = new koa()
 
-// app.use(
-//   static(__dirname+'/src/')
-// )
+app.use(
+  static(__dirname+'/src/source')
+)
 
 app.use(
   mount('/',async (ctx)=>{
-    ctx.body=fs.readFileSync(__dirname+'/src/index.html','utf-8')
+    ctx.body=fs.readFileSync(__dirname+'/src/source/index.html','utf-8')
   })
-)
+);
 
 app.listen(3000)
+
+
